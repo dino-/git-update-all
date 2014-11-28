@@ -1,0 +1,30 @@
+name:                darcs-pull-all
+version:             1.0
+cabal-version:       >= 1.8
+build-type:          Simple
+license:             BSD3
+license-file:        LICENSE
+copyright:           2014 Dino Morelli
+author:              Dino Morelli
+maintainer:          Dino Morelli <dino@ui3.info>
+stability:           experimental
+homepage:            
+synopsis:            Perform a darcs pull in every subdir
+description:         A script to pull all repos in a dir with a remote if they have one. Intended to synchronize one server's repos with another.
+category:            Application, Console, Scripting
+tested-with:         GHC >= 7.6.3
+
+source-repository    head
+   type:             darcs
+   location:         http://ui3.info/darcs/hscrtmpl
+
+-- Hey! darcs-pull-all.hs is a *script*, you don't have to build it unless
+-- you want to have a binary!
+executable           darcs-pull-all
+   main-is:          darcs-pull-all.hs
+   build-depends:    base >= 3 && < 5,
+                     directory,
+                     filepath,
+                     old-locale,
+                     process,
+                     time
