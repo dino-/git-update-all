@@ -1,5 +1,12 @@
 #! /usr/bin/env runhaskell
 
+{-
+   This is intended to be run regularly from a cron job or
+   similar. Something like this is what I use:
+
+      00 04 * * *  sh -c '/path/to/darcs-pull-all.hs /var/lib/darcs >> /path/to/darcs-pull-all.log' || echo "ERROR exit code: $?"
+-}
+
 import Control.Monad
 import Data.List
 import Data.Time
