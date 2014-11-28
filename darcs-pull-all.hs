@@ -24,7 +24,7 @@ import Text.Printf
 
 main :: IO ()
 main = do
-   darcsDir : [] <- getArgs
+   darcsDir <- getArgs >>= parseArgs
 
    -- No buffering, it messes with the order of output
    mapM_ (flip hSetBuffering NoBuffering) [ stdout, stderr, stdin ]
@@ -47,6 +47,19 @@ main = do
    mapM_ pull remoteProjects
 
    logM "Completed"
+
+
+parseArgs :: [String] -> IO FilePath
+parseArgs ("-h"     : _ ) = usage
+parseArgs ("--help" : _ ) = usage
+parseArgs (p        : []) = return p
+parseArgs _               = usage
+
+
+usage :: IO a
+usage = do
+   pn <- getProgName
+   error $ printf "usage: %s DIR_CONTAINING_DARCS_REPOS" pn
 
 
 hasRemote :: FilePath -> IO Bool
