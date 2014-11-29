@@ -16,7 +16,7 @@ tested-with:         GHC >= 7.6.3
 
 source-repository    head
    type:             darcs
-   location:         http://ui3.info/darcs/hscrtmpl
+   location:         http://hub.darcs.net/dino/darcs-pull-all
 
 -- Hey! darcs-pull-all.hs is a *script*, you don't have to build it unless
 -- you want to have a binary!
