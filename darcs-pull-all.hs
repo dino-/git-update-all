@@ -73,7 +73,7 @@ pull path = do
    setCurrentDirectory path
 
    -- Could optionally add --verbose to see the patch descriptions
-   ok `fmap` system "darcs pull --all"
+   ok `fmap` system "darcs pull --all 2>&1"
 
 
 {- Get the current date/time as a string in the specified format
