@@ -7,19 +7,19 @@
       00 04 * * *  sh -c '/path/to/darcs-pull-all.hs /var/lib/darcs >> /path/to/darcs-pull-all.log' || echo "ERROR exit code: $?"
 -}
 
-import Control.Monad
-import Data.List
-import Data.Time
-import Data.Time.Format ( defaultTimeLocale )
-import System.Directory
-import System.Environment
-import System.Exit
+import Control.Monad ( filterM )
+import Data.List ( isPrefixOf, sort )
+import Data.Time.Clock ( getCurrentTime )
+import Data.Time.Format ( defaultTimeLocale, formatTime )
+import Data.Time.LocalTime ( utcToLocalZonedTime )
+import System.Directory ( getDirectoryContents, setCurrentDirectory )
+import System.Environment ( getArgs, getProgName )
+import System.Exit ( ExitCode ( ExitSuccess ) )
 import System.FilePath
 import System.IO ( BufferMode ( NoBuffering )
-                 , hSetBuffering, stdin, stdout, stderr 
-                 )
+   , hSetBuffering, stdin, stdout, stderr )
 import System.Process ( system )
-import Text.Printf
+import Text.Printf ( printf )
 
 
 main :: IO ()
