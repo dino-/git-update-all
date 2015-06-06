@@ -10,6 +10,7 @@
 import Control.Monad
 import Data.List
 import Data.Time
+import Data.Time.Format ( defaultTimeLocale )
 import System.Cmd
 import System.Directory
 import System.Environment
@@ -18,7 +19,6 @@ import System.FilePath
 import System.IO ( BufferMode ( NoBuffering )
                  , hSetBuffering, stdin, stdout, stderr 
                  )
-import System.Locale
 import Text.Printf
 
 
