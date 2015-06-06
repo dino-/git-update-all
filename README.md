@@ -3,7 +3,7 @@
 
 ## Synopsis
 
-Perform a darcs pull in every subdir
+Perform a darcs pull in every subdir (Haskell)
 
 
 ## Description
