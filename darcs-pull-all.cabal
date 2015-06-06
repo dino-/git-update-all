@@ -8,7 +8,7 @@ copyright:           2014 Dino Morelli
 author:              Dino Morelli
 maintainer:          Dino Morelli <dino@ui3.info>
 stability:           experimental
-homepage:            
+homepage:            http://hub.darcs.net/dino/darcs-pull-all
 synopsis:            Perform a darcs pull in every subdir
 description:         A script to pull all repos in a dir with a remote if they have one. Intended to synchronize one server's repos with another.
 category:            Application, Console, Scripting
