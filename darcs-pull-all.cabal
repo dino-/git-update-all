@@ -22,8 +22,8 @@ source-repository    head
 -- you want to have a binary!
 executable           darcs-pull-all
    main-is:          darcs-pull-all.hs
-   build-depends:    base >= 3 && < 5,
-                     directory,
-                     filepath,
-                     process,
-                     time >= 1.5
+   build-depends:      base >= 3 && < 5
+                     , directory
+                     , filepath
+                     , process
+                     , time >= 1.5
