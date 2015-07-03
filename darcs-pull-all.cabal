@@ -25,6 +25,5 @@ executable           darcs-pull-all
    build-depends:    base >= 3 && < 5,
                      directory,
                      filepath,
-                     old-locale,
                      process,
-                     time
+                     time >= 1.5
