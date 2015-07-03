@@ -45,6 +45,9 @@
 # cabal intermediates
 \.installed-pkg-config
 \.setup-config
+# cabal sandbox
+^\.cabal-sandbox(/|$)
+cabal\.sandbox\.config
 # standard cabal build dir, might not be boring for everybody
 ^dist(/|$)
 # autotools
