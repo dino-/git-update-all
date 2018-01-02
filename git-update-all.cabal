@@ -1,0 +1,29 @@
+name:                git-update-all
+version:             1.2
+cabal-version:       >= 1.8
+build-type:          Simple
+license:             BSD3
+license-file:        LICENSE
+copyright:           2014-2017 Dino Morelli
+author:              Dino Morelli
+maintainer:          Dino Morelli <dino@ui3.info>
+stability:           experimental
+homepage:            https://github.com/dino-/git-update-all
+synopsis:            Perform a `git remote update` in every subdir
+description:         A script to update all repos in a dir full of git repos. Intended to synchronize one server's repos with another.
+category:            Application, Console, Scripting
+tested-with:         GHC >= 8.0.2
+
+source-repository    head
+   type:             git
+   location:         https://github.com/dino-/git-update-all
+
+-- Hey! git-update-all.hs is a *script*, you don't have to build it unless
+-- you want to have a binary!
+executable           git-update-all
+   main-is:          git-update-all.hs
+   build-depends:      base >= 3 && < 5
+                     , directory
+                     , filepath
+                     , process
+                     , time >= 1.5
