@@ -4,7 +4,7 @@
    This is intended to be run regularly from a cron job or
    similar. Something like this is what I use:
 
-      00 04 * * *  sh -c '/path/to/darcs-pull-all.hs /var/lib/darcs >> /path/to/darcs-pull-all.log' || echo "ERROR exit code: $?"
+      00 04 * * *  sh -c '/path/to/git-pull-all.hs /var/lib/git >> /path/to/git-pull-all.log' || echo "ERROR exit code: $?"
 -}
 
 import Control.Monad ( filterM )
@@ -24,7 +24,7 @@ import Text.Printf ( printf )
 
 main :: IO ()
 main = do
-   darcsDir <- getArgs >>= parseArgs
+   gitDir <- getArgs >>= parseArgs
 
    -- No buffering, it messes with the order of output
    mapM_ (flip hSetBuffering NoBuffering) [ stdout, stderr, stdin ]
@@ -35,16 +35,19 @@ main = do
       ( sort                           -- ..sorted
       . filter (not . isPrefixOf ".")  -- ..excluding dot dirs
       ) `fmap`
-      getDirectoryContents darcsDir    -- All darcs repos here..
+      getDirectoryContents gitDir    -- All git repos here..
 
    -- Turn them into absolute paths
-   let allProjectsAbs = map (darcsDir </>) allProjects
+   let allProjectsAbs = map (gitDir </>) allProjects
 
    -- Only repos that have a remote set
-   remoteProjects <- filterM hasRemote allProjectsAbs
+   --remoteProjects <- filterM hasRemote allProjectsAbs
 
    -- Pull in each of them
-   mapM_ pull remoteProjects
+   --mapM_ pull remoteProjects
+
+   -- Perform a `git remote update` in each of them
+   mapM_ update allProjectsAbs
 
    logM "Completed"
 
@@ -60,6 +63,12 @@ usage :: IO a
 usage = do
    pn <- getProgName
    error $ printf "usage: %s DIR_CONTAINING_DARCS_REPOS" pn
+
+
+update :: FilePath -> IO Bool
+update path = do
+   setCurrentDirectory path
+   ok <$> system "git remote update"
 
 
 hasRemote :: FilePath -> IO Bool
