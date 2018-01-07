@@ -5,6 +5,10 @@
    similar. Something like this is what I use:
 
       00 04 * * *  sh -c '/path/to/git-update-all.hs /var/lib/git >> /path/to/git-update-all.log' || echo "ERROR exit code: $?"
+
+   The directories this script updates should be mirror clones of the originals to ensure it gets all changes. To make this type of clone:
+
+      $ git clone --mirror https://path/to/project.git
 -}
 
 import Control.Monad ( forM )
