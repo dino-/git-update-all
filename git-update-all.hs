@@ -12,7 +12,8 @@
 -}
 
 import Control.Monad ( forM )
-import Data.List ( isPrefixOf, sort )
+import Data.Char ( toLower )
+import Data.List ( isPrefixOf, sortOn )
 import Data.Time.Clock ( getCurrentTime )
 import Data.Time.Format ( defaultTimeLocale, formatTime )
 import Data.Time.LocalTime ( utcToLocalZonedTime )
@@ -36,10 +37,10 @@ main = do
    logM "Starting"
 
    allProjects <-
-      ( sort                           -- ..sorted
+      ( sortOn (map toLower)           -- ..sorted
       . filter (not . isPrefixOf ".")  -- ..excluding dot dirs
       ) `fmap`
-      getDirectoryContents gitDir    -- All git repos here..
+      getDirectoryContents gitDir      -- All git repos here..
 
    -- Turn them into absolute paths
    let allProjectsAbs = map (gitDir </>) allProjects
