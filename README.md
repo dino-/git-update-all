@@ -14,7 +14,7 @@ local system. It's intended to synchronize one server's repos with another.
 The local repo copies will need to be what's known as "mirror clones" of the
 originals to ensure it gets all the changes. To make this type of clone:
 
-    $ git clone --mirror https://path/to-project.git
+    $ git clone --mirror https://path/to/project.git
 
 
 ## Getting source
