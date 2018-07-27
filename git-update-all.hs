@@ -22,7 +22,7 @@ import System.Environment ( getArgs, getProgName )
 import System.Exit ( ExitCode ( ExitSuccess ), die, exitSuccess )
 import System.FilePath ( (</>) )
 import System.IO ( BufferMode ( NoBuffering ),
-   hSetBuffering, stdin, stdout, stderr )
+   hSetBuffering, stdout, stderr )
 import System.Process ( system )
 import Text.Printf ( printf )
 
@@ -32,7 +32,7 @@ main = do
    gitDir <- getArgs >>= parseArgs
 
    -- No buffering, it messes with the order of output
-   mapM_ (flip hSetBuffering NoBuffering) [ stdout, stderr, stdin ]
+   mapM_ (flip hSetBuffering NoBuffering) [ stdout, stderr ]
 
    logM "Starting"
 
