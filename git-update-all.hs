@@ -68,7 +68,7 @@ parseArgs _               = usage
 usage :: IO a
 usage = do
    pn <- getProgName
-   error $ printf "usage: %s DIR_CONTAINING_GIT_REPOS" pn
+   die $ printf "usage: %s DIR_CONTAINING_GIT_REPOS" pn
 
 
 {- Get the current date/time as a string in the specified format
