@@ -20,9 +20,9 @@ import Data.Time.LocalTime ( utcToLocalZonedTime )
 import System.Directory ( getDirectoryContents, setCurrentDirectory )
 import System.Environment ( getArgs, getProgName )
 import System.Exit ( ExitCode ( ExitSuccess ), die, exitSuccess )
-import System.FilePath
-import System.IO ( BufferMode ( NoBuffering )
-   , hSetBuffering, stdin, stdout, stderr )
+import System.FilePath ( (</>) )
+import System.IO ( BufferMode ( NoBuffering ),
+   hSetBuffering, stdin, stdout, stderr )
 import System.Process ( system )
 import Text.Printf ( printf )
 
