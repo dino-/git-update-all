@@ -26,6 +26,8 @@ import System.IO ( BufferMode ( NoBuffering ),
 import System.Process ( system )
 import Text.Printf ( printf )
 
+{-# ANN parseArgs "HLint: ignore Use list literal pattern" #-}
+
 
 main :: IO ()
 main = do
@@ -53,7 +55,7 @@ main = do
 
    logM "Completed"
 
-   if (any (/= ExitSuccess) results)
+   if any (/= ExitSuccess) results
       then die "Failed to update one or more git repositories. Please check the log."
       else exitSuccess
 
