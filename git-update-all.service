@@ -1,0 +1,11 @@
+[Unit]
+Description=Update local git repositories
+After=network.target
+OnFailure=failmsg@%n.service
+
+[Service]
+Type=simple
+ExecStart=/home/git/bin/git-update-all.hs /var/lib/git
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Update local git repositories timer
+
+[Timer]
+OnBootSec=12h
+OnUnitActiveSec=1d
+Unit=git-update-all.service
+
+[Install]
+WantedBy=timers.target
